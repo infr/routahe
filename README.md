@@ -4,18 +4,13 @@ This is a command line [reittiopas](http://www.reittiopas.fi/en/) client for laz
 
 ![](https://raw.githubusercontent.com/anttikon/routahe/master/misc/routahe.png)
 
-<p>
-  <a href="https://www.npmjs.com/package/routahe?activeTab=dependencies">
-    <img alt="Dependencies" src="https://img.shields.io/david/anttikon/routahe.svg"></a>
-</p>
-
 ## Install
 
 Obtain free API key from [digitransit.fi](https://digitransit.fi/en/developers/api-registration/).
 
 ```bash
 npm install -g routahe
-npm run set-apikey --api_key=YOUR_API_KEY_HERE
+echo DIGITRANSIT_SUBSCRIPTION_KEY=YOUR_API_KEY_HERE > .env
 ```
 
 ## Usage (cli)
