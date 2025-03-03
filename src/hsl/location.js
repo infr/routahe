@@ -1,6 +1,8 @@
 import fetch from 'node-fetch'
 import querystring from 'querystring'
 
+const DIGITRANSIT_SUBSCRIPTION_KEY = process.env.DIGITRANSIT_SUBSCRIPTION_KEY
+
 const getHslLocation = async (query) => {
   const params = {
     text: query,
@@ -11,11 +13,14 @@ const getHslLocation = async (query) => {
     size: 1,
     lang: 'fi',
   }
-  const response = await fetch(`http://api.digitransit.fi/geocoding/v1/search?${querystring.stringify(params)}`)
+  const response = await fetch(`http://api.digitransit.fi/geocoding/v1/search?${querystring.stringify(params)}`, {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json', 'digitransit-subscription-key': DIGITRANSIT_SUBSCRIPTION_KEY },
+  })
   return response.json()
 }
 
-const mapFeature = feature => {
+const mapFeature = (feature) => {
   if (!feature) {
     return feature
   }
@@ -24,7 +29,7 @@ const mapFeature = feature => {
   return { label, lon, lat }
 }
 
-export const getLocationByString = async query => {
+export const getLocationByString = async (query) => {
   const hslLocation = await getHslLocation(query)
   return mapFeature(hslLocation.features?.[0])
 }

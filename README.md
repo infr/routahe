@@ -11,8 +11,11 @@ This is a command line [reittiopas](http://www.reittiopas.fi/en/) client for laz
 
 ## Install
 
+Obtain free API key from [digitransit.fi](https://digitransit.fi/en/developers/api-registration/).
+
 ```bash
 npm install -g routahe
+npm run set-apikey --api_key=YOUR_API_KEY_HERE
 ```
 
 ## Usage (cli)
